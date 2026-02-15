@@ -1,23 +1,219 @@
+cd ~/proyecto-rick-v3
+
+cat > index.html << 'ENDHTML'
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RICK PRO</title>
-<style>*{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#0f0;font-family:Courier,monospace;overflow:hidden}.splash{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999}.logo{width:250px;height:120px;border:4px solid;border-radius:15px;display:flex;justify-content:center;align-items:center;animation:rb 2s linear infinite;box-shadow:0 0 30px}@keyframes rb{0%{border-color:#f00}14%{border-color:#00f}28%{border-color:#0f0}42%{border-color:#ff0}57%{border-color:#f70}71%{border-color:#90d}85%{border-color:#f19}100%{border-color:#f00}}.logo-text{font-size:40px;font-weight:bold;animation:rt 2s linear infinite}@keyframes rt{0%{color:#f00}14%{color:#00f}28%{color:#0f0}42%{color:#ff0}57%{color:#f70}71%{color:#90d}85%{color:#f19}100%{color:#f00}}.progress{width:80%;max-width:300px;height:25px;background:#011;border:2px solid #0f0;border-radius:8px;margin-top:30px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,#f00,#00f,#0f0,#ff0,#f70,#90d,#f19);width:0%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;font-size:12px}.main{display:none;padding:10px;overflow-y:auto;height:100vh}.header{text-align:center;padding:15px;background:linear-gradient(45deg,#01a,#033);border:3px solid #f63;border-radius:10px;margin-bottom:15px}h1{font-size:24px;animation:rt 3s linear infinite}.box{background:#011;border:2px solid #0f0;border-radius:8px;padding:15px;margin:10px 0}.mb{border:3px solid;animation:rb 3s linear infinite}h2{color:#0f0;font-size:16px;margin-bottom:10px;border-bottom:1px solid #0f0;padding-bottom:5px}input{width:100%;background:#000;border:2px solid #0f0;padding:12px;border-radius:5px;margin:8px 0;color:#0f0;font-family:Courier,monospace;font-size:13px}button{background:linear-gradient(135deg,#0f0,#0c0);color:#000;border:none;padding:14px;margin:8px 0;border-radius:6px;font-weight:bold;font-size:13px;width:100%;cursor:pointer}.pb{background:linear-gradient(135deg,#06f,#04c)}.pb.yt{background:linear-gradient(135deg,#f00,#c00)}.pb.tt{background:linear-gradient(135deg,#000,#333);color:#fff}.pb.fb{background:linear-gradient(135deg,#18f,#0e5)}.info{background:#000;border:2px solid #0f0;border-radius:5px;padding:15px;margin:12px 0;font-size:11px;line-height:1.6}.footer{text-align:center;padding:8px;background:linear-gradient(45deg,#01a,#033);border:2px solid #0f0;border-radius:8px;margin-top:15px;font-size:10px}</style>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#0f0;font-family:'Courier New',monospace;overflow:hidden}
+.splash-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999}
+.splash-logo{width:300px;height:150px;border:4px solid;border-radius:20px;display:flex;justify-content:center;align-items:center;animation:border-rainbow 2s linear infinite;box-shadow:0 0 40px currentColor}
+@keyframes border-rainbow{0%{border-color:#ff0000}12.5%{border-color:#0000ff}25%{border-color:#00ff00}37.5%{border-color:#ffff00}50%{border-color:#ff7f00}62.5%{border-color:#9400d3}75%{border-color:#ff1493}87.5%{border-color:#808080}100%{border-color:#ff0000}}
+.splash-text{font-size:48px;font-weight:bold;animation:text-rainbow 2s linear infinite}
+@keyframes text-rainbow{0%{color:#ff0000}12.5%{color:#0000ff}25%{color:#00ff00}37.5%{color:#ffff00}50%{color:#ff7f00}62.5%{color:#9400d3}75%{color:#ff1493}87.5%{color:#808080}100%{color:#ff0000}}
+.splash-progress{width:80%;max-width:400px;height:30px;background:#001100;border:2px solid #0f0;border-radius:10px;margin-top:40px;overflow:hidden}
+.splash-progress-bar{height:100%;background:linear-gradient(90deg,#ff0000,#0000ff,#00ff00,#ffff00,#ff7f00,#9400d3,#ff1493,#808080);width:0%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;font-size:14px;transition:width 0.05s linear}
+.main-content{display:none;padding:10px;overflow-y:auto;height:100vh}
+.header{text-align:center;padding:20px;background:linear-gradient(45deg,#001a00,#003300);border:3px solid #ff6b35;border-radius:10px;margin-bottom:15px;box-shadow:0 0 30px rgba(255,107,53,0.6)}
+h1{font-size:28px;animation:rainbow 3s linear infinite;text-shadow:0 0 20px currentColor}
+@keyframes rainbow{0%{color:#ff0000;text-shadow:0 0 20px #ff0000}14%{color:#ff7f00;text-shadow:0 0 20px #ff7f00}28%{color:#ffff00;text-shadow:0 0 20px #ffff00}42%{color:#00ff00;text-shadow:0 0 20px #00ff00}57%{color:#0000ff;text-shadow:0 0 20px #0000ff}71%{color:#4b0082;text-shadow:0 0 20px #4b0082}85%{color:#9400d3;text-shadow:0 0 20px #9400d3}100%{color:#ff0000;text-shadow:0 0 20px #ff0000}}
+.mode-selector{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;padding:10px;background:#001100;border:2px solid #0f0;border-radius:8px}
+.mode-btn{padding:15px;background:#001a00;border:2px solid #0f0;border-radius:5px;text-align:center;cursor:pointer;transition:all 0.3s;font-size:16px;font-weight:bold}
+.mode-btn.active{animation:rainbow 3s linear infinite;border-color:currentColor;box-shadow:0 0 20px currentColor}
+.mode-desc{font-size:10px;margin-top:5px;color:#0f0;font-weight:normal}
+.tool-box{background:#001100;border:2px solid #0f0;border-radius:8px;padding:15px;margin:12px 0;box-shadow:0 0 15px rgba(0,255,0,0.3)}
+.tool-box.multicolor{border:3px solid;animation:border-rainbow 3s linear infinite}
+h2{color:#0f0;font-size:16px;margin-bottom:12px;border-bottom:1px solid #0f0;padding-bottom:6px}
+h2.red-border{border-bottom:2px solid #ff0000}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:15px}
+.tab{padding:12px;background:#001a00;border:2px solid #0f0;border-radius:5px;text-align:center;cursor:pointer;transition:all 0.3s;font-size:12px}
+.tab.active{background:#003300;border:3px solid;animation:border-rainbow 3s linear infinite;box-shadow:0 0 15px currentColor}
+.tab-content{display:none}
+.tab-content.active{display:block}
+input{width:100%;background:#000;border:2px solid #0f0;padding:12px;border-radius:5px;margin:8px 0;font-family:'Courier New',monospace;font-size:13px;color:#0f0}
+input.facebook{color:#1877f2;border-color:#1877f2}
+input.tiktok{color:#fff;border-color:#fff}
+input.youtube{color:#ff0000;border-color:#ff0000}
+button{background:linear-gradient(135deg,#0f0,#0c0);color:#000;border:none;padding:14px 20px;margin:6px 3px;border-radius:6px;font-weight:bold;font-size:13px;cursor:pointer;transition:all 0.3s;box-shadow:0 0 15px rgba(0,255,0,0.5);width:calc(50% - 6px)}
+button:active{transform:scale(0.95);box-shadow:0 0 25px rgba(0,255,0,0.8)}
+.btn-full{width:calc(100% - 6px)}
+.output{background:#000;border:2px solid #0f0;border-radius:5px;padding:12px;margin:12px 0;min-height:80px;max-height:200px;overflow-y:auto;font-size:12px;line-height:1.6;white-space:pre-wrap;box-shadow:inset 0 0 15px rgba(0,255,0,0.2)}
+.output.large{max-height:400px;min-height:200px}
+.output.xlarge{max-height:600px;min-height:300px}
+.video-item{background:#001a00;border:3px solid;border-radius:8px;padding:12px;margin:10px 0;position:relative;display:flex;gap:10px;flex-direction:column}
+.video-item.youtube{border-color:#ff0000;box-shadow:0 0 15px rgba(255,0,0,0.5)}
+.video-item.tiktok{border-color:#fff;box-shadow:0 0 15px rgba(255,255,255,0.5)}
+.video-item.facebook{border-color:#1877f2;box-shadow:0 0 15px rgba(24,119,242,0.5)}
+.video-thumbnail{width:100%;max-width:120px;height:90px;background:#000;border:2px solid #0f0;border-radius:5px;object-fit:cover}
+.video-title{color:#fff;font-weight:bold;margin-bottom:5px;font-size:12px}
+.video-info{font-size:10px;opacity:0.8;margin:3px 0}
+.video-controls{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+.video-controls button{width:auto;padding:8px 12px;font-size:11px;flex:1;min-width:80px}
+.btn-play{background:linear-gradient(135deg,#00ff00,#00cc00)}
+.btn-delete{background:linear-gradient(135deg,#ff0000,#cc0000)}
+.btn-gallery{background:linear-gradient(135deg,#0066ff,#0044cc)}
+.footer{text-align:center;padding:8px;background:linear-gradient(45deg,#001a00,#003300);border:2px solid #0f0;border-radius:8px;margin-top:15px;box-shadow:0 0 20px rgba(0,255,0,0.3)}
+.footer h3{color:#0f0;font-size:12px;margin-bottom:3px}
+.footer .subtitle{font-size:9px}
+.progress{width:100%;height:25px;background:#001100;border:2px solid #0f0;border-radius:5px;overflow:hidden;margin:10px 0}
+.progress-bar{height:100%;background:linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3);width:0%;transition:width 0.3s;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;font-size:11px;text-shadow:1px 1px 2px #000}
+.format-selector{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.format-btn{padding:12px;background:#001a00;border:2px solid #0f0;border-radius:5px;text-align:center;cursor:pointer;transition:all 0.3s;font-size:14px;font-weight:bold}
+.format-btn.active{animation:rainbow 3s linear infinite;border-color:currentColor;box-shadow:0 0 15px currentColor}
+.format-desc{font-size:9px;margin-top:3px;color:#0f0;font-weight:normal}
+.quality-selector{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.quality-btn{padding:10px;background:#001a00;border:2px solid;border-radius:5px;text-align:center;cursor:pointer;font-size:11px;font-weight:bold;transition:all 0.3s}
+.quality-btn.high{border-color:#00ff00;color:#00ff00}
+.quality-btn.medium{border-color:#0000ff;color:#0000ff}
+.quality-btn.low{border-color:#ff0000;color:#ff0000}
+.quality-btn.active{box-shadow:0 0 15px currentColor;transform:scale(1.05)}
+.history-item,.download-item{padding:10px;margin:8px 0;background:#000;border-left:5px solid;border-radius:4px;font-size:11px;position:relative}
+.history-item.youtube,.download-item.youtube{border-left-color:#ff0000;background:rgba(255,0,0,0.1)}
+.history-item.tiktok,.download-item.tiktok{border-left-color:#fff;background:rgba(255,255,255,0.1)}
+.history-item.facebook,.download-item.facebook{border-left-color:#1877f2;background:rgba(24,119,242,0.1)}
+.item-delete-btn{position:absolute;top:5px;right:5px;background:#ff0000;color:#fff;border:none;padding:5px 10px;border-radius:3px;font-size:10px;cursor:pointer}
+.terminal-output{background:#000;color:#0f0;font-family:'Courier New',monospace;padding:10px;border:2px solid #0f0;border-radius:5px;max-height:300px;overflow-y:auto;font-size:9px;line-height:1.6}
+.terminal-line{margin:3px 0}
+video{width:100%;max-height:300px;border-radius:5px;margin:10px 0}
+.modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.95);padding:10px;overflow-y:auto}
+.modal-content{background:#001100;border:3px solid #0f0;border-radius:10px;padding:15px;max-width:95%;margin:20px auto;box-shadow:0 0 30px rgba(0,255,0,0.5)}
+.close{color:#ff0000;float:right;font-size:28px;font-weight:bold;cursor:pointer;line-height:20px}
+.close:hover{color:#ff0000;text-shadow:0 0 10px #ff0000}
+.video-wrapper{display:flex;gap:10px;align-items:flex-start}
+.video-details{flex:1}
+</style>
 </head>
 <body>
-<div class="splash" id="splash">
-<div class="logo"><div class="logo-text">RICK</div></div>
-<div class="progress"><div class="bar" id="bar">0%</div></div>
+<div class="splash-screen" id="splashScreen">
+<div class="splash-logo">
+<div class="splash-text">RICK</div>
 </div>
-<div class="main" id="main">
-<div class="header"><h1>⚡ RICK PRO ⚡</h1><p style="font-size:12px;margin-top:8px">Descargador Universal</p></div>
-<div class="box"><h2>🔍 PEGA TU ENLACE</h2><input type="text" id="url" placeholder="https://youtube.com/... o tiktok.com/... o facebook.com/..."><button onclick="descargar()">🚀 DESCARGAR</button></div>
-<div class="box mb"><h2>🌐 ELIGE PLATAFORMA</h2><button class="pb yt" onclick="abrir('yt')">📺 YouTube</button><button class="pb tt" onclick="abrir('tt')">🎵 TikTok</button><button class="pb fb" onclick="abrir('fb')">📘 Facebook</button></div>
-<div class="box"><h2>💡 INSTRUCCIONES</h2><div class="info"><strong>1:</strong> Copia el enlace<br><strong>2:</strong> Pégalo arriba<br><strong>3:</strong> DESCARGAR<br><strong>4:</strong> ¡Listo!<br><br>✅ Gratis<br>✅ Sin límites</div></div>
-<div class="footer"><div>🚀 RICK PRO V3.0</div><div>© 2026</div></div>
+<div class="splash-progress">
+<div class="splash-progress-bar" id="splashProgress">0%</div>
 </div>
-<script>window.onload=function(){let p=0;const i=setInterval(()=>{p+=2;document.getElementById('bar').style.width=p+'%';document.getElementById('bar').textContent=p+'%';if(p>=100){clearInterval(i);setTimeout(()=>{document.getElementById('splash').style.display='none';document.getElementById('main').style.display='block'},200)}},40)};function descargar(){const u=document.getElementById('url').value.trim();if(!u){alert('⚠️ Pega un enlace');return}let d='';if(u.includes('youtube')||u.includes('youtu.be')){d='https://ytmp3.nu/?url='+encodeURIComponent(u)}else if(u.includes('tiktok')){d='https://snaptik.app/abc?url='+encodeURIComponent(u)}else if(u.includes('facebook')||u.includes('fb.watch')){d='https://fdown.net/download.php?url='+encodeURIComponent(u)}else{alert('⚠️ URL no válida');return}window.open(d,'_blank')}function abrir(p){let u='';if(p==='yt')u='https://ytmp3.nu';if(p==='tt')u='https://snaptik.app';if(p==='fb')u='https://fdown.net';window.open(u,'_blank')}</script>
+</div>
+
+<div class="main-content" id="mainContent">
+<div class="header">
+<h1>⚡ RICK PRO ⚡</h1>
+</div>
+
+<div class="mode-selector">
+<div class="mode-btn" id="turboMode" onclick="selectMode('turbo')">
+TURBO
+<div class="mode-desc">Descarga con dependencias normales</div>
+</div>
+<div class="mode-btn" id="proMode" onclick="selectMode('pro')">
+PRO
+<div class="mode-desc">Descarga con dependencia premium</div>
+</div>
+</div>
+
+<div class="tool-box">
+<div class="tabs">
+<div class="tab" onclick="cambiarTab('videos')">🎬 Videos</div>
+<div class="tab" onclick="cambiarTab('audio')">🎵 Audio</div>
+<div class="tab" onclick="cambiarTab('estadistica')">📊 Estadística</div>
+<div class="tab" onclick="cambiarTab('historial')">📜 Historial</div>
+<div class="tab" onclick="cambiarTab('descarga')">💾 Descarga</div>
+</div>
+</div>
+
+<div class="format-selector">
+<div class="format-btn" id="pm3Btn" onclick="selectFormat('pm3')">
+PM3
+<div class="format-desc">Audio</div>
+</div>
+<div class="format-btn" id="pm4Btn" onclick="selectFormat('pm4')">
+PM4
+<div class="format-desc">Video</div>
+</div>
+</div>
+
+<div class="quality-selector">
+<div class="quality-btn high" id="qualityHigh" onclick="selectQuality('high')">
+🟢 ALTA<br><span style="font-size:9px">HD, 1080p, 2K, 4K</span>
+</div>
+<div class="quality-btn medium" id="qualityMedium" onclick="selectQuality('medium')">
+🔵 MEDIA<br><span style="font-size:9px">SD, 480p, 720p</span>
+</div>
+<div class="quality-btn low" id="qualityLow" onclick="selectQuality('low')">
+🔴 BAJA<br><span style="font-size:9px">240p, 360p</span>
+</div>
+</div>
+
+<div class="tool-box">
+<h2>🔍 SELECCIONA LA PLATAFORMA</h2>
+<input type="text" id="youtube" class="youtube" placeholder="https://youtube.com/...">
+<input type="text" id="tiktok" class="tiktok" placeholder="https://vt.tiktok.com/...">
+<input type="text" id="facebook" class="facebook" placeholder="https://facebook.com/...">
+<button class="btn-full" onclick="pegarEnlace()">📋 PEGAR ENLACE</button>
+<button class="btn-full" onclick="descargar()">🚀 DESCARGAR</button>
+<div class="progress">
+<div class="progress-bar" id="progressBar">0% - 0 MB</div>
+</div>
+<button class="btn-full" onclick="mostrarCodigo()">💻 MOSTRAR CÓDIGOS YT-DLP</button>
+<div class="terminal-output" id="terminalOutput" style="display:none"></div>
+</div>
+
+<div id="videos" class="tab-content">
+<div class="tool-box multicolor">
+<h2>📹 MIS VIDEOS</h2>
+<div class="output large" id="videosList">Cargando videos...</div>
+</div>
+</div>
+
+<div id="audio" class="tab-content">
+<div class="tool-box multicolor">
+<h2>🎵 MIS AUDIOS</h2>
+<div class="output large" id="audiosList">Cargando audios...</div>
+</div>
+</div>
+
+<div id="estadistica" class="tab-content">
+<div class="tool-box multicolor">
+<h2 class="red-border">📊 ESTADÍSTICAS</h2>
+<div class="output" id="statsContent">Cargando estadísticas...</div>
+</div>
+</div>
+
+<div id="historial" class="tab-content">
+<div class="tool-box multicolor">
+<h2 class="red-border">📜 HISTORIAL</h2>
+<div class="output xlarge" id="historialContent">Cargando historial...</div>
+<button class="btn-full" onclick="limpiarHistorial()">🗑️ LIMPIAR HISTORIAL</button>
+</div>
+</div>
+
+<div id="descarga" class="tab-content">
+<div class="tool-box multicolor">
+<h2 class="red-border">💾 GESTOR DE DESCARGAS</h2>
+<div class="output xlarge" id="galleryContent">Cargando archivos...</div>
+<button class="btn-full" onclick="limpiarDescargas()">🗑️ LIMPIAR DESCARGAS</button>
+</div>
+</div>
+
+<div class="footer">
+<h3>📍 UBICACIÓN</h3>
+<div class="subtitle">DCIM/RICK</div>
+</div>
+
+<div id="videoModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal()">&times;</span>
+<h2>▶️ Reproducir</h2>
+<video id="videoPlayer" controls></video>
+</div>
+</div>
+</div>
+
+<script>
+let currentMode='turbo';let currentFormat='pm4';let currentQuality='high';let terminalLines=[];window.onload=function(){let progress=0;const interval=setInterval(()=>{progress+=2;document.getElementById('splashProgress').style.width=progress+'%';document.getElementById('splashProgress').textContent=progress+'%';if(progress>=100){clearInterval(interval);setTimeout(()=>{document.getElementById('splashScreen').style.display='none';document.getElementById('mainContent').style.display='block'},200)}},40)};function selectMode(mode){currentMode=mode;document.querySelectorAll('.mode-btn').forEach(el=>el.classList.remove('active'));document.getElementById(mode+'Mode').classList.add('active')}function selectFormat(format){currentFormat=format;document.querySelectorAll('.format-btn').forEach(el=>el.classList.remove('active'));document.getElementById(format+'Btn').classList.add('active')}function selectQuality(quality){currentQuality=quality;document.querySelectorAll('.quality-btn').forEach(el=>el.classList.remove('active'));document.getElementById('quality'+quality.charAt(0).toUpperCase()+quality.slice(1)).classList.add('active')}function cambiarTab(tab){document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active'));document.getElementById(tab).classList.add('active');event.target.classList.add('active');if(tab==='estadistica')cargarEstadisticas();if(tab==='historial')cargarHistorial();if(tab==='descarga')cargarGaleria();if(tab==='videos')cargarVideos();if(tab==='audio')cargarAudios()}async function pegarEnlace(){try{const text=await navigator.clipboard.readText();if(text.includes('youtube.com')||text.includes('youtu.be')){document.getElementById('youtube').value=text}else if(text.includes('tiktok')){document.getElementById('tiktok').value=text}else if(text.includes('facebook')){document.getElementById('facebook').value=text}else{alert('⚠️ URL no reconocida')}}catch(e){alert('⚠️ Error al pegar')}}async function descargar(){const yt=document.getElementById('youtube').value.trim();const tt=document.getElementById('tiktok').value.trim();const fb=document.getElementById('facebook').value.trim();const url=yt||tt||fb;if(!url){alert('⚠️ Pega un enlace');return}const progressBar=document.getElementById('progressBar');const audio_only=currentFormat==='pm3';const qualityMap={high:'best',medium:'720p',low:'480p'};const quality=qualityMap[currentQuality];terminalLines=[];addTerminalLine('═══════════════════════════════════════');addTerminalLine('🚀 INICIANDO DESCARGA');addTerminalLine('═══════════════════════════════════════');addTerminalLine('📋 URL: '+url);addTerminalLine('⚙️  MODO: '+currentMode.toUpperCase());addTerminalLine('🎯 FORMATO: '+(audio_only?'AUDIO MP3':'VIDEO MP4'));addTerminalLine('🎬 CALIDAD: '+currentQuality.toUpperCase());addTerminalLine('═══════════════════════════════════════');addTerminalLine('⏳ Descargando...');try{const res=await fetch('http://localhost:5000/download',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url,quality,audio_only,mode:currentMode})});const monitorear=setInterval(async()=>{try{const prog=await fetch('http://localhost:5000/progress');const data=await prog.json();if(data.percent){const mb=data.downloaded_mb||0;progressBar.style.width=data.percent+'%';progressBar.textContent=Math.floor(data.percent)+'% - '+mb.toFixed(1)+' MB';if(data.speed)addTerminalLine('⚡ Velocidad: '+data.speed)}}catch(e){}},500);const data=await res.json();clearInterval(monitorear);if(data.success){addTerminalLine('═══════════════════════════════════════');addTerminalLine('✅ ¡DESCARGA COMPLETADA!');addTerminalLine('═══════════════════════════════════════');addTerminalLine('📝 Título: '+data.title);addTerminalLine('📁 Ubicación: /storage/emulated/0/DCIM/Rick/');addTerminalLine('✨ Archivo listo');addTerminalLine('═══════════════════════════════════════');progressBar.style.width='100%';progressBar.textContent='100% - Completado'}else{addTerminalLine('❌ ERROR: '+data.error);alert('❌ Error: '+data.error)}}catch(e){addTerminalLine('❌ ERROR DE CONEXIÓN');alert('❌ Error de conexión')}}function addTerminalLine(line){terminalLines.push(line);if(terminalLines.length>50)terminalLines.shift()}function mostrarCodigo(){const term=document.getElementById('terminalOutput');if(term.style.display==='none'){term.style.display='block';term.innerHTML=terminalLines.map(l=>'<div class="terminal-line">'+l+'</div>').join('');term.scrollTop=term.scrollHeight}else{term.style.display='none'}}async function cargarVideos(){try{const res=await fetch('http://localhost:5000/files?type=video');const files=await res.json();const videosList=document.getElementById('videosList');if(files.length===0){videosList.innerHTML='No hay videos';return}let html='';files.forEach(file=>{const platform=file.platform.toLowerCase();const emoji=platform==='youtube'?'🔴':platform==='tiktok'?'⚪':'🔵';html+=`<div class="video-item ${platform}"><div class="video-wrapper"><img src="http://localhost:5000/thumbnail/${encodeURIComponent(file.name)}" class="video-thumbnail" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%2290%22%3E%3Crect fill=%22%23000%22 width=%22120%22 height=%2290%22/%3E%3Ctext fill=%22%230f0%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22%3E${emoji}%3C/text%3E%3C/svg%3E"><div class="video-details"><div class="video-title">${emoji} ${file.name}</div><div class="video-info">📦 ${file.size} • 📅 ${file.date} • 📱 ${file.platform}</div><div class="video-controls"><button class="btn-play" onclick="reproducirVideo('${encodeURIComponent(file.name)}')">▶️ Ver</button><button class="btn-gallery" onclick="copiarGaleria('${encodeURIComponent(file.name)}')">📁 Galería</button><button class="btn-delete" onclick="eliminarVideo('${encodeURIComponent(file.name)}')">🗑️ Eliminar</button></div></div></div></div>`});videosList.innerHTML=html}catch(e){document.getElementById('videosList').innerHTML='Error'}}async function cargarAudios(){try{const res=await fetch('http://localhost:5000/files?type=audio');const files=await res.json();const audiosList=document.getElementById('audiosList');if(files.length===0){audiosList.innerHTML='No hay audios';return}let html='';files.forEach(file=>{const platform=file.platform.toLowerCase();const emoji=platform==='youtube'?'🔴':platform==='tiktok'?'⚪':'🔵';html+=`<div class="video-item ${platform}">${emoji} ${file.name}<br>📦 ${file.size} • 📅 ${file.date}<br><button class="btn-play" onclick="reproducirAudio('${encodeURIComponent(file.name)}')">▶️ Play</button><button class="btn-delete" onclick="eliminarVideo('${encodeURIComponent(file.name)}')">🗑️ Del</button></div>`});audiosList.innerHTML=html}catch(e){}}async function reproducirVideo(filename){try{const modal=document.getElementById('videoModal');const player=document.getElementById('videoPlayer');player.src='http://localhost:5000/open/'+filename;modal.style.display='block'}catch(e){alert('Error')}}async function reproducirAudio(filename){reproducirVideo(filename)}function cerrarModal(){document.getElementById('videoModal').style.display='none';document.getElementById('videoPlayer').pause();document.getElementById('videoPlayer').src=''}async function copiarGaleria(filename){try{const res=await fetch('http://localhost:5000/copy-to-gallery/'+filename,{method:'POST'});const data=await res.json();if(data.success){alert('✅ Copiado');cargarVideos()}}catch(e){alert('Error')}}async function eliminarVideo(filename){if(!confirm('¿Eliminar?'))return;try{const res=await fetch('http://localhost:5000/delete/'+filename,{method:'DELETE'});const data=await res.json();if(data.success){alert('✅ Eliminado');cargarVideos();cargarAudios()}}catch(e){alert('Error')}}async function cargarEstadisticas(){try{const res=await fetch('http://localhost:5000/stats');const stats=await res.json();document.getElementById('statsContent').innerHTML=`Total: ${stats.total_downloads}\nYouTube: ${stats.platforms.YouTube}\nTikTok: ${stats.platforms.TikTok}\nFacebook: ${stats.platforms.Facebook}\n\nTotal MB: ${stats.total_mb.toFixed(2)}\nAudio: ${stats.audio_only}`}catch(e){}}async function cargarHistorial(){try{const res=await fetch('http://localhost:5000/history');const hist=await res.json();let html='';hist.forEach((h)=>{const platform=h.platform.toLowerCase();const emoji=platform==='youtube'?'🔴':platform==='tiktok'?'⚪':'🔵';html+=`<div class="history-item ${platform}">${emoji} [${h.date}] ${h.platform} - ${h.title} ✓</div>`});document.getElementById('historialContent').innerHTML=html||'Vacío'}catch(e){}}async function cargarGaleria(){try{const res=await fetch('http://localhost:5000/files');const files=await res.json();let html='';files.forEach(f=>{const platform=f.platform.toLowerCase();const emoji=platform==='youtube'?'🔴':platform==='tiktok'?'⚪':'🔵';html+=`<div class="download-item ${platform}">${emoji} ${f.name}\n📦 ${f.size} • 📱 ${f.platform} • 📅 ${f.date}</div>`});document.getElementById('galleryContent').innerHTML=html||'Vacío'}catch(e){}}async function limpiarHistorial(){if(confirm('¿Limpiar?')){alert('Función en backend')}}async function limpiarDescargas(){if(confirm('¿Limpiar?')){alert('Función en backend')}}selectMode('turbo');selectFormat('pm4');selectQuality('high')
+</script>
 </body>
 </html>
+ENDHTML
