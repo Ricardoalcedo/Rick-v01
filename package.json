@@ -1,0 +1,43 @@
+```json
+{
+  "name": "rick-pro-v3",
+  "version": "3.0.0",
+  "description": "Descargador profesional de videos de YouTube, TikTok y Facebook con interfaz terminal hacker",
+  "main": "Backend v.01",
+  "scripts": {
+    "start": "python3 backend.py",
+    "server": "python3 -m http.server 8080",
+    "install": "pip install -r requirements.txt --break-system-packages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ricardoalcedo/Rick-v01.git"
+  },
+  "keywords": [
+    "video",
+    "downloader",
+    "youtube",
+    "tiktok",
+    "facebook",
+    "yt-dlp",
+    "flask",
+    "termux",
+    "android",
+    "mp3",
+    "mp4"
+  ],
+  "author": "Ricardo Alcedo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ricardoalcedo/Rick-v01/issues"
+  },
+  "homepage": "https://github.com/Ricardoalcedo/Rick-v01#readme",
+  "dependencies": {
+    "flask": "^3.0.0",
+    "flask-cors": "^4.0.0",
+    "yt-dlp": "^2024.12.23"
+  },
+  "engines": {
+    "python": ">=3.9"
+  }
+}
